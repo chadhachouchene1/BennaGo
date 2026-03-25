@@ -534,7 +534,6 @@
         app:menu="@menu/bottom_nav_user"
         app:itemIconTint="@color/brown_medium"
         app:itemTextColor="@color/brown_medium"
-        app:itemActiveIndicatorColor="#FFD4703A"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -85,24 +85,32 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
-        // FIX: null-safe getText() — avoids NullPointerException
         String email    = etEmail.getText() != null ? etEmail.getText().toString().trim() : "";
         String password = etPassword.getText() != null ? etPassword.getText().toString().trim() : "";
-        clearErrors();
+
         if (TextUtils.isEmpty(email))    { tilEmail.setError("Email requis");           return; }
         if (TextUtils.isEmpty(password)) { tilPassword.setError("Mot de passe requis"); return; }
 
         setLoading(true);
         executor.execute(() -> {
-            User user = db.userDao().login(email, password);
+            // ✅ DEBUG : chercher l'utilisateur par email seulement
+            User userByEmail = db.userDao().getUserByEmail(email);
+
             runOnUiThread(() -> {
-                setLoading(false);
-                if (user != null) {
-                    sessionManager.saveUserSession(user.getId(), user.getName(), false);
-                    Toast.makeText(this, "Bienvenue " + user.getName() + " !", Toast.LENGTH_SHORT).show();
-                    goTo(MainActivity.class);
+                if (userByEmail == null) {
+                    tilEmail.setError("DEBUG: Email introuvable en DB !");
                 } else {
-                    tilPassword.setError("Email ou mot de passe incorrect");
+                    // ✅ Comparer le mot de passe manuellement
+                    String dbPassword = userByEmail.getPassword();
+                    if (dbPassword.equals(password)) {
+                        setLoading(false);
+                        sessionManager.saveUserSession(userByEmail.getId(), userByEmail.getName(), false);
+                        Toast.makeText(this, "Bienvenue " + userByEmail.getName() + " !", Toast.LENGTH_SHORT).show();
+                        goTo(MainActivity.class);
+                    } else {
+                        tilPassword.setError("DEBUG — Saisi: [" + password + "] | DB: [" + dbPassword + "]");
+                        setLoading(false);
+                    }
                 }
             });
         });

@@ -67,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
         tilConfirmPassword.setError(null);
 
         boolean valid = true;
-        if (TextUtils.isEmpty(name))  { tilName.setError("Le nom est requis");    valid = false; }
+        if (TextUtils.isEmpty(name))  { tilName.setError("Le nom est requis"); valid = false; }
         if (TextUtils.isEmpty(email) || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             tilEmail.setError("Email invalide"); valid = false;
         }
@@ -81,24 +81,27 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setEnabled(false);
         btnRegister.setText("Création en cours...");
 
+        // ✅ UN SEUL thread — tout se passe en séquence dans le même executor
         executor.execute(() -> {
             User existing = db.userDao().getUserByEmail(email);
-            runOnUiThread(() -> {
-                if (existing != null) {
+
+            if (existing != null) {
+                runOnUiThread(() -> {
                     tilEmail.setError("Cet email est déjà utilisé");
                     btnRegister.setEnabled(true);
                     btnRegister.setText(getString(R.string.btn_register));
-                    return;
-                }
-                User newUser = new User(name, email, phone, password);
-                executor.execute(() -> {
-                    db.userDao().insertUser(newUser);
-                    runOnUiThread(() -> {
-                        Toast.makeText(this, "Compte créé avec succès ! 🎉", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, LoginActivity.class));
-                        finish();
-                    });
                 });
+                return; // ← stop ici, pas d'insertion
+            }
+
+            // Email libre → on insère directement dans le même thread
+            User newUser = new User(name, email, phone, password);
+            db.userDao().insertUser(newUser);
+
+            runOnUiThread(() -> {
+                Toast.makeText(this, "Compte créé avec succès !", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
             });
         });
     }
