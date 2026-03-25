@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brown_dark">
+
+    <!-- Background circles décoratifs -->
+    <View
+        android:id="@+id/circle_top"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/circle_orange_transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="-80dp"
+        android:layout_marginEnd="-80dp"/>
+
+    <View
+        android:id="@+id/circle_bottom"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/circle_orange_transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="-60dp"
+        android:layout_marginStart="-60dp"/>
+
+    <!-- Logo container -->
+    <LinearLayout
+        android:id="@+id/logo_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Logo Icon — FIX: use string resource instead of hardcoded emoji -->
+        <TextView
+            android:id="@+id/tv_logo_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/splash_icon"
+            android:textSize="80sp"
+            android:alpha="0"/>
+
+        <!-- App name — FIX: use string resource instead of hardcoded "QuickEat" -->
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:letterSpacing="0.05"
+            android:layout_marginTop="8dp"
+            android:alpha="0"/>
+
+        <TextView
+            android:id="@+id/tv_tagline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tagline"
+            android:textSize="14sp"
+            android:textColor="@color/beige_medium"
+            android:layout_marginTop="8dp"
+            android:alpha="0"/>
+
+    </LinearLayout>
+
+    <!-- Loading indicator -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="120dp"
+        android:layout_height="4dp"
+        android:indeterminate="true"
+        android:progressTint="@color/orange_primary"
+        android:indeterminateTint="@color/orange_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="60dp"
+        android:alpha="0"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

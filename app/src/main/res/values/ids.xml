@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="btn_logout_admin" type="id" />
+    <item name="tv_admin_title" type="id" />
+    <item name="tv_user_name" type="id">id_user</item>
+    <item name="tv_avatar_letter" type="id">id_avatar</item>
+    <item name="iv_avatar" type="id">id_avatar2</item>
+    <item name="bottom_nav" type="id">idnav</item>
+</resources>

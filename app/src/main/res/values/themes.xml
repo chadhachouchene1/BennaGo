@@ -1,9 +1,33 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.BennaGo" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.BennaGo"
+        parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/orange_primary</item>
+        <item name="colorPrimaryVariant">@color/orange_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/brown_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/brown_dark</item>
+        <item name="colorOnBackground">@color/brown_dark</item>
+        <item name="colorError">@color/error_red</item>
+
+        <item name="android:statusBarColor">@color/brown_dark</item>
+
+        <!-- FIX: ces attributs sont requis par TextInputLayout OutlinedBox
+             pour que le Layout Editor puisse instancier les composants -->
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.AppCompat.Small</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.AppCompat.Button</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.AppCompat.Caption</item>
+
+        <!-- Style global des TextInputLayout -->
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+
     </style>
 
-    <style name="Theme.BennaGo" parent="Base.Theme.BennaGo" />
 </resources>

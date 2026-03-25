@@ -1,5 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- ──── Palette BennaGo ──── -->
+
+    <!-- Marron foncé (header, splash, fond sombre) -->
+    <color name="brown_dark">#3B1F0C</color>
+
+    <!-- Marron medium (textes secondaires, BottomNav inactif) -->
+    <color name="brown_medium">#7C4A2D</color>
+
+    <!-- Marron clair (sous-titres, hints) -->
+    <color name="brown_light">#A0614A</color>
+
+    <!-- Orange principal (CTA, boutons user) -->
+    <color name="orange_primary">#D4703A</color>
+
+    <!-- Orange clair / foncé -->
+    <color name="orange_light">#E8976A</color>
+    <color name="orange_dark">#B85A2A</color>
+
+    <!-- Orange très clair (fond cartes) -->
+    <color name="orange_xlight">#F5C9A8</color>
+
+    <!-- Beige clair (fond général) -->
+    <color name="beige_light">#FFF8F0</color>
+
+    <!-- Beige medium (textes sur fond sombre) -->
+    <color name="beige_medium">#E8C49A</color>
+
+    <!-- Beige card (fond des cartes) -->
+    <color name="beige_card">#FFEFD9</color>
+
+    <!-- Or / Gold (étoiles, badges premium) -->
+    <color name="gold_accent">#E8B86D</color>
+
+    <!-- Blanc pur -->
+    <color name="white">#FFFFFF</color>
+
+
+
+
+    <!-- Vert succès -->
+    <color name="success_green">#5A9E6F</color>
+
+    <!-- Rouge erreur -->
+    <color name="error_red">#D45A5A</color>
+
+    <!-- Texte hint / placeholder -->
+    <color name="text_hint">#B08A7A</color>
+
+    <!-- ──── Couleurs Material obligatoires ──── -->
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
 </resources>

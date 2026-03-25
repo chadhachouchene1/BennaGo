@@ -1,3 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BennaGo</string>
+
+    <!-- Splash -->
+    <string name="tagline">Savourez chaque instant</string>
+    <!-- FIX: emoji as XML Unicode escape — avoids AAPT "Can not extract resource" -->
+    <string name="splash_icon">&#x1F354;</string>
+
+    <!-- Login -->
+    <string name="btn_login">Se connecter</string>
+    <string name="no_account">Pas encore de compte ? <b>S\'inscrire</b></string>
+    <string name="hint_email">Adresse e-mail</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="admin_code_hint">Code secret admin</string>
+    <!-- FIX: emoji as XML Unicode escape -->
+    <string name="emoji_key">&#x1F511;</string>
+
+    <!-- Register -->
+    <string name="btn_register">Créer mon compte</string>
+    <string name="have_account">Déjà un compte ? <b>Se connecter</b></string>
+    <string name="hint_name">Nom complet</string>
+    <string name="hint_phone">Numéro de téléphone</string>
+    <string name="hint_confirm_password">Confirmer le mot de passe</string>
+
+    <!-- Main User -->
+    <string name="search_hint">Rechercher un plat&#x2026;</string>
+    <string name="nav_home">Accueil</string>
+    <string name="nav_cart">Panier</string>
+    <string name="nav_orders">Commandes</string>
+    <string name="nav_profile">Profil</string>
+
+    <!-- Admin -->
+    <string name="admin_title">Tableau de bord Admin</string>
+    <string name="logout_confirm_title">Déconnexion</string>
+    <string name="logout_confirm_msg">Voulez-vous vous déconnecter ?</string>
+    <string name="yes">Oui</string>
+    <string name="cancel">Annuler</string>
+    <string name="welcome">Bon retour !</string>
+    <string name="subtitle">Connectez-vous pour commander</string>
+
 </resources>
