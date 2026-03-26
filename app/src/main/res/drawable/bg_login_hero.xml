@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/bg_login_hero.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:startColor="#FF7A1A"
+        android:endColor="#E05A00"
+        android:angle="180"
+        android:type="linear"/>
+</shape>
