@@ -2,15 +2,15 @@
 <!-- res/drawable/bg_tab_item.xml -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Selected state: orange pill -->
+    <!-- Onglet actif : brun moyen #6E473B -->
     <item android:state_selected="true">
         <shape android:shape="rectangle">
-            <solid android:color="#E07020"/>
+            <solid android:color="#6E473B"/>
             <corners android:radius="10dp"/>
         </shape>
     </item>
 
-    <!-- Default state: transparent -->
+    <!-- Onglet inactif : transparent -->
     <item>
         <shape android:shape="rectangle">
             <solid android:color="@android:color/transparent"/>

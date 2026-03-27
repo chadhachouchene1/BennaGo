@@ -14,13 +14,17 @@ import java.util.concurrent.Executors;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    // ── Vues ─────────────────────────────────────────────────────────────────
     private TextInputEditText etName, etEmail, etPhone, etPassword, etConfirmPassword;
     private TextInputLayout   tilName, tilEmail, tilPhone, tilPassword, tilConfirmPassword;
     private MaterialButton    btnRegister;
     private TextView          tvLoginLink;
-    private AppDatabase       db;
+
+    // ── Services ─────────────────────────────────────────────────────────────
+    private AppDatabase           db;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
+    // ─────────────────────────────────────────────────────────────────────────
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         setupClickListeners();
     }
 
+    // ── Liaison XML ↔ Java ───────────────────────────────────────────────────
     private void initViews() {
         etName            = findViewById(R.id.et_name);
         etEmail           = findViewById(R.id.et_email);
@@ -45,6 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         tvLoginLink       = findViewById(R.id.tv_login_link);
     }
 
+    // ── Listeners ────────────────────────────────────────────────────────────
     private void setupClickListeners() {
         btnRegister.setOnClickListener(v -> validateAndRegister());
         tvLoginLink.setOnClickListener(v -> {
@@ -53,56 +59,93 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    // ── Validation + Inscription ──────────────────────────────────────────────
     private void validateAndRegister() {
-        String name            = etName.getText().toString().trim();
-        String email           = etEmail.getText().toString().trim();
-        String phone           = etPhone.getText().toString().trim();
-        String password        = etPassword.getText().toString().trim();
-        String confirmPassword = etConfirmPassword.getText().toString().trim();
+        String name            = getText(etName);
+        String email           = getText(etEmail);
+        String phone           = getText(etPhone);
+        String password        = getText(etPassword);
+        String confirmPassword = getText(etConfirmPassword);
 
+        // Effacer toutes les erreurs précédentes
+        clearErrors();
+
+        // Validation champ par champ
+        boolean valid = true;
+
+        if (TextUtils.isEmpty(name)) {
+            tilName.setError("Le nom est requis");
+            valid = false;
+        }
+        if (TextUtils.isEmpty(email) ||
+                !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            tilEmail.setError("Email invalide");
+            valid = false;
+        }
+        if (TextUtils.isEmpty(phone)) {
+            tilPhone.setError("Le téléphone est requis");
+            valid = false;
+        }
+        if (password.length() < 6) {
+            tilPassword.setError("Minimum 6 caractères");
+            valid = false;
+        }
+        if (!password.equals(confirmPassword)) {
+            tilConfirmPassword.setError("Les mots de passe ne correspondent pas");
+            valid = false;
+        }
+
+        if (!valid) return; // stoppe si un champ est invalide
+
+        // Passe en état chargement
+        setLoading(true);
+
+        // Tout se passe dans un seul thread séquentiel
+        executor.execute(() -> {
+
+            // 1. Vérifier si l'email existe déjà en DB
+            User existing = db.userDao().getUserByEmail(email);
+
+            if (existing != null) {
+                // Email déjà pris → retour sur le thread principal pour afficher l'erreur
+                runOnUiThread(() -> {
+                    tilEmail.setError("Cet email est déjà utilisé");
+                    setLoading(false);
+                });
+                return; // stoppe ici, pas d'insertion
+            }
+
+            // 2. Email libre → insertion du nouvel utilisateur
+            User newUser = new User(name, email, phone, password);
+            db.userDao().insertUser(newUser);
+
+            // 3. Retour sur le thread principal → message + redirection
+            runOnUiThread(() -> {
+                Toast.makeText(this,
+                        "Compte créé avec succès !", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
+            });
+        });
+    }
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+
+    private void clearErrors() {
         tilName.setError(null);
         tilEmail.setError(null);
         tilPhone.setError(null);
         tilPassword.setError(null);
         tilConfirmPassword.setError(null);
+    }
 
-        boolean valid = true;
-        if (TextUtils.isEmpty(name))  { tilName.setError("Le nom est requis"); valid = false; }
-        if (TextUtils.isEmpty(email) || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            tilEmail.setError("Email invalide"); valid = false;
-        }
-        if (TextUtils.isEmpty(phone)) { tilPhone.setError("Le téléphone est requis"); valid = false; }
-        if (password.length() < 6)    { tilPassword.setError("Minimum 6 caractères"); valid = false; }
-        if (!password.equals(confirmPassword)) {
-            tilConfirmPassword.setError("Les mots de passe ne correspondent pas"); valid = false;
-        }
-        if (!valid) return;
+    private void setLoading(boolean loading) {
+        btnRegister.setEnabled(!loading);
+        btnRegister.setText(loading ? "Création en cours..." : "→  S'inscrire");
+    }
 
-        btnRegister.setEnabled(false);
-        btnRegister.setText("Création en cours...");
-
-        // ✅ UN SEUL thread — tout se passe en séquence dans le même executor
-        executor.execute(() -> {
-            User existing = db.userDao().getUserByEmail(email);
-
-            if (existing != null) {
-                runOnUiThread(() -> {
-                    tilEmail.setError("Cet email est déjà utilisé");
-                    btnRegister.setEnabled(true);
-                    btnRegister.setText(getString(R.string.btn_register));
-                });
-                return; // ← stop ici, pas d'insertion
-            }
-
-            // Email libre → on insère directement dans le même thread
-            User newUser = new User(name, email, phone, password);
-            db.userDao().insertUser(newUser);
-
-            runOnUiThread(() -> {
-                Toast.makeText(this, "Compte créé avec succès !", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, LoginActivity.class));
-                finish();
-            });
-        });
+    /** Lecture null-safe d'un TextInputEditText */
+    private String getText(TextInputEditText et) {
+        return et.getText() != null ? et.getText().toString().trim() : "";
     }
 }

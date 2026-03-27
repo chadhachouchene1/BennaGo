@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F0EB"
+    android:background="#E1D4C2"
     android:fillViewport="true">
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:gravity="center_horizontal"
         android:paddingBottom="40dp">
 
-        <!-- ── HERO CARD (orange top section) ── -->
+        <!-- ── HERO brun foncé ── -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="220dp"
@@ -24,7 +24,7 @@
             android:paddingTop="32dp"
             android:paddingBottom="32dp">
 
-            <!-- Logo circle -->
+            <!-- Logo cercle beige -->
             <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp">
@@ -34,26 +34,25 @@
                     android:layout_height="80dp"
                     app:cardCornerRadius="40dp"
                     app:cardElevation="6dp"
-                    app:cardBackgroundColor="#FFFFFF">
+                    app:cardBackgroundColor="#E1D4C2">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
                         android:layout_gravity="center"
-                        android:text="🍲"
-                        android:textSize="50sp"/>
-
-
+                        android:text="🥘"
+                        android:textSize="30sp"
+                        android:gravity="center"/>
                 </androidx.cardview.widget.CardView>
             </FrameLayout>
 
-            <!-- App name -->
+            <!-- Titre -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="BennaGO"
-                android:textColor="#FFFFFF"
+                android:textColor="#E1D4C2"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-medium"/>
@@ -64,12 +63,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Commandez. Régalez-vous."
-                android:textColor="#FFE0CC"
+                android:textColor="#A78D78"
                 android:textSize="13sp"/>
 
         </LinearLayout>
 
-        <!-- ── WHITE CARD (form container) ── -->
+        <!-- ── CARTE FORMULAIRE ── -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +77,7 @@
             android:layout_marginTop="-28dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="10dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardBackgroundColor="#F5EFE6">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -86,15 +85,15 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
-                <!-- ── TABS: Connexion / Inscription ── -->
+                <!-- ── TABS : Utilisateur / Inscription (2 onglets seulement) ── -->
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
                     android:background="@drawable/bg_tab_container"
                     app:tabBackground="@drawable/bg_tab_item"
-                    app:tabSelectedTextColor="#FFFFFF"
-                    app:tabTextColor="#E07020"
+                    app:tabSelectedTextColor="#E1D4C2"
+                    app:tabTextColor="#6E473B"
                     app:tabRippleColor="@android:color/transparent"
                     app:tabGravity="fill"
                     app:tabMode="fixed"
@@ -109,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="EMAIL"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#A78D78"
                     android:textSize="11sp"
                     android:letterSpacing="0.12"
                     android:textStyle="bold"/>
@@ -119,8 +118,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    app:boxBackgroundColor="#FFF8F4"
-                    app:boxStrokeColor="#F0D0B8"
+                    app:boxBackgroundColor="#EDE4D8"
+                    app:boxStrokeColor="#A78D78"
                     app:boxStrokeWidth="1dp"
                     app:boxCornerRadiusTopStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
@@ -128,8 +127,8 @@
                     app:boxCornerRadiusBottomEnd="10dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconDrawable="@android:drawable/ic_dialog_email"
-                    app:startIconTint="#E07020"
-                    app:errorTextColor="#E53935">
+                    app:startIconTint="#6E473B"
+                    app:errorTextColor="#B00020">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_email"
@@ -138,7 +137,7 @@
                         android:hint="votre@email.com"
                         android:inputType="textEmailAddress"
                         android:textSize="14sp"
-                        android:textColor="#333333"/>
+                        android:textColor="#291C0E"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -148,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="MOT DE PASSE"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#A78D78"
                     android:textSize="11sp"
                     android:letterSpacing="0.12"
                     android:textStyle="bold"/>
@@ -158,8 +157,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    app:boxBackgroundColor="#FFF8F4"
-                    app:boxStrokeColor="#F0D0B8"
+                    app:boxBackgroundColor="#EDE4D8"
+                    app:boxStrokeColor="#A78D78"
                     app:boxStrokeWidth="1dp"
                     app:boxCornerRadiusTopStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
@@ -168,8 +167,8 @@
                     app:passwordToggleEnabled="true"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconDrawable="@android:drawable/ic_lock_lock"
-                    app:startIconTint="#E07020"
-                    app:errorTextColor="#E53935">
+                    app:startIconTint="#6E473B"
+                    app:errorTextColor="#B00020">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_password"
@@ -178,18 +177,18 @@
                         android:hint="••••••••"
                         android:inputType="textPassword"
                         android:textSize="14sp"
-                        android:textColor="#333333"/>
+                        android:textColor="#291C0E"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- ── CODE ADMIN (caché par défaut) ── -->
+                <!-- ── CODE ADMIN — caché, apparaît au long press ── -->
                 <TextView
                     android:id="@+id/tv_label_admin_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="CODE SECRET"
-                    android:textColor="#9E9E9E"
+                    android:text="CODE SECRET ADMIN"
+                    android:textColor="#A78D78"
                     android:textSize="11sp"
                     android:letterSpacing="0.12"
                     android:textStyle="bold"
@@ -201,8 +200,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:visibility="gone"
-                    app:boxBackgroundColor="#FFF8F4"
-                    app:boxStrokeColor="#8D4E29"
+                    app:boxBackgroundColor="#EDE4D8"
+                    app:boxStrokeColor="#291C0E"
                     app:boxStrokeWidth="1dp"
                     app:boxCornerRadiusTopStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
@@ -210,8 +209,8 @@
                     app:boxCornerRadiusBottomEnd="10dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:startIconDrawable="@android:drawable/ic_menu_manage"
-                    app:startIconTint="#8D4E29"
-                    app:errorTextColor="#E53935">
+                    app:startIconTint="#291C0E"
+                    app:errorTextColor="#B00020">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_admin_code"
@@ -220,11 +219,11 @@
                         android:hint="Code secret admin"
                         android:inputType="textPassword"
                         android:textSize="14sp"
-                        android:textColor="#333333"/>
+                        android:textColor="#291C0E"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- ── BOUTON CONNEXION ── -->
+                <!-- ── BOUTON (long press = mode admin) ── -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_login"
                     android:layout_width="match_parent"
@@ -233,20 +232,21 @@
                     android:text="→  Se connecter"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E1D4C2"
                     android:letterSpacing="0.02"
-                    app:backgroundTint="#E07020"
+                    android:longClickable="true"
+                    app:backgroundTint="#6E473B"
                     app:cornerRadius="12dp"
                     app:elevation="4dp"/>
 
-                <!-- ── MESSAGE D'ERREUR GLOBAL ── -->
+                <!-- ── ERREUR GLOBALE ── -->
                 <TextView
                     android:id="@+id/tv_error_message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text=""
-                    android:textColor="#E53935"
+                    android:textColor="#B00020"
                     android:textSize="13sp"
                     android:gravity="center"
                     android:visibility="gone"/>
@@ -260,7 +260,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="4dp"
                     android:text="Pas encore de compte ? S'inscrire"
-                    android:textColor="#E07020"
+                    android:textColor="#6E473B"
                     android:textSize="13sp"
                     android:textStyle="bold"
                     android:paddingTop="8dp"
