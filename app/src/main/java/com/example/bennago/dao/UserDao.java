@@ -1,8 +1,10 @@
-package com.example.bennago;
+package com.example.bennago.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.bennago.entity.User;
 
 @Dao
 public interface UserDao {

@@ -6,13 +6,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import com.example.bennago.db.AppDatabase;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class AdminActivity extends AppCompatActivity {
 
     private SessionManager sessionManager;
-    private AppDatabase    db;
+    private AppDatabase db;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     private TextView  tvTotalUsers;

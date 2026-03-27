@@ -24,7 +24,6 @@
             android:paddingTop="32dp"
             android:paddingBottom="32dp">
 
-            <!-- Logo cercle beige -->
             <FrameLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp">
@@ -43,10 +42,10 @@
                         android:text="🥘"
                         android:textSize="30sp"
                         android:gravity="center"/>
+
                 </androidx.cardview.widget.CardView>
             </FrameLayout>
 
-            <!-- Titre -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,7 +56,6 @@
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-medium"/>
 
-            <!-- Tagline -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,7 +83,7 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
-                <!-- ── TABS : Utilisateur / Inscription (2 onglets seulement) ── -->
+                <!-- ── TABS : Connexion / Inscription ── -->
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout"
                     android:layout_width="match_parent"
@@ -181,49 +179,7 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- ── CODE ADMIN — caché, apparaît au long press ── -->
-                <TextView
-                    android:id="@+id/tv_label_admin_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="CODE SECRET ADMIN"
-                    android:textColor="#A78D78"
-                    android:textSize="11sp"
-                    android:letterSpacing="0.12"
-                    android:textStyle="bold"
-                    android:visibility="gone"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_admin_code"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:visibility="gone"
-                    app:boxBackgroundColor="#EDE4D8"
-                    app:boxStrokeColor="#291C0E"
-                    app:boxStrokeWidth="1dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconDrawable="@android:drawable/ic_menu_manage"
-                    app:startIconTint="#291C0E"
-                    app:errorTextColor="#B00020">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_admin_code"
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:hint="Code secret admin"
-                        android:inputType="textPassword"
-                        android:textSize="14sp"
-                        android:textColor="#291C0E"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- ── BOUTON (long press = mode admin) ── -->
+                <!-- ── BOUTON CONNEXION NORMAL ── -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_login"
                     android:layout_width="match_parent"
@@ -234,12 +190,59 @@
                     android:textStyle="bold"
                     android:textColor="#E1D4C2"
                     android:letterSpacing="0.02"
-                    android:longClickable="true"
                     app:backgroundTint="#6E473B"
                     app:cornerRadius="12dp"
                     app:elevation="4dp"/>
 
-                <!-- ── ERREUR GLOBALE ── -->
+                <!-- ── SÉPARATEUR "ou" ── -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="#D0C4B4"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:textColor="#A78D78"
+                        android:textSize="12sp"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="#D0C4B4"/>
+
+                </LinearLayout>
+
+                <!-- ── BOUTON EMPREINTE ADMIN ── -->
+                <!-- Visible seulement si l'appareil supporte la biométrie -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_biometric"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="12dp"
+                    android:text="  Admin — Empreinte digitale"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#E1D4C2"
+                    android:letterSpacing="0.02"
+                    android:drawableLeft="@android:drawable/ic_lock_lock"
+                    app:backgroundTint="#291C0E"
+                    app:cornerRadius="12dp"
+                    app:elevation="4dp"
+                    android:visibility="gone"/>
+
+                <!-- ── MESSAGE D'ERREUR ── -->
                 <TextView
                     android:id="@+id/tv_error_message"
                     android:layout_width="match_parent"

@@ -6,6 +6,9 @@ import android.text.TextUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.bennago.db.AppDatabase;
+import com.example.bennago.entity.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -21,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView          tvLoginLink;
 
     // ── Services ─────────────────────────────────────────────────────────────
-    private AppDatabase           db;
+    private AppDatabase db;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     // ─────────────────────────────────────────────────────────────────────────

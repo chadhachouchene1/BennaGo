@@ -1,4 +1,4 @@
-package com.example.bennago;
+package com.example.bennago.entity;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
