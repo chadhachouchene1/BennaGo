@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="#F5EFE6">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp">
+
+        <!-- Nom + prix unitaire -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_cart_dish_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom du plat"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#291C0E"/>
+
+            <TextView
+                android:id="@+id/tv_cart_dish_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.000 TND"
+                android:textSize="12sp"
+                android:textColor="#A78D78"
+                android:layout_marginTop="2dp"/>
+
+            <TextView
+                android:id="@+id/tv_cart_subtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="= 0.000 TND"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#6E473B"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- Contrôles quantité -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/btn_qty_minus"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="#EDE4D8"
+                android:src="@android:drawable/ic_input_delete"
+                android:padding="6dp"
+                app:tint="#6E473B"/>
+
+            <TextView
+                android:id="@+id/tv_cart_qty"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#291C0E"
+                android:gravity="center"/>
+
+            <ImageButton
+                android:id="@+id/btn_qty_plus"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="#6E473B"
+                android:src="@android:drawable/ic_input_add"
+                android:padding="6dp"
+                app:tint="#E1D4C2"/>
+
+            <ImageButton
+                android:id="@+id/btn_remove_item"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/ic_menu_delete"
+                android:padding="4dp"
+                app:tint="#B00020"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
