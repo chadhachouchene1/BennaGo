@@ -123,18 +123,18 @@ public class PaymentActivity extends AppCompatActivity {
         tvProcessingMsg  = findViewById(R.id.tv_processing_msg);
 
         // Formulaire carte
-        etCardNumber         = findViewById(R.id.et_card_number);
-        etCardHolder         = findViewById(R.id.et_card_holder);
-        etExpiry             = findViewById(R.id.et_expiry);
-        etCvv                = findViewById(R.id.et_cvv);
-        tilCardNumber        = findViewById(R.id.til_card_number);
-        tilCardHolder        = findViewById(R.id.til_card_holder);
-        tilExpiry            = findViewById(R.id.til_expiry);
-        tilCvv               = findViewById(R.id.til_cvv);
-        tvCardType           = findViewById(R.id.tv_card_type);
-        tvCardPreviewNumber  = findViewById(R.id.tv_card_preview_number);
-        tvCardPreviewHolder  = findViewById(R.id.tv_card_preview_holder);
-        tvCardPreviewExpiry  = findViewById(R.id.tv_card_preview_expiry);
+       // etCardNumber         = findViewById(R.id.et_card_number);
+        //etCardHolder         = findViewById(R.id.et_card_holder);
+       // etExpiry             = findViewById(R.id.et_expiry);
+       // etCvv                = findViewById(R.id.et_cvv);
+       // tilCardNumber        = findViewById(R.id.til_card_number);
+       // tilCardHolder        = findViewById(R.id.til_card_holder);
+       // tilExpiry            = findViewById(R.id.til_expiry);
+       // tilCvv               = findViewById(R.id.til_cvv);
+        //tvCardType           = findViewById(R.id.tv_card_type);
+        //tvCardPreviewNumber  = findViewById(R.id.tv_card_preview_number);
+        //tvCardPreviewHolder  = findViewById(R.id.tv_card_preview_holder);
+       // tvCardPreviewExpiry  = findViewById(R.id.tv_card_preview_expiry);
 
         tvTotal.setText(String.format("%.3f TND", total));
         btnPay.setEnabled(false);

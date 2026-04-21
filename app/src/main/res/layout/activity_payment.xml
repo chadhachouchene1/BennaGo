@@ -236,35 +236,7 @@
             android:layout_marginTop="16dp"
             android:visibility="gone">
 
-            <!-- Prévisualisation carte -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="185dp"
-                android:layout_marginBottom="20dp"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="8dp"
-                app:cardBackgroundColor="#FF291C0E">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <LinearLayout android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" android:gravity="center_vertical">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="BennaGO" android:textColor="#E1D4C2"
-                            android:textSize="15sp" android:textStyle="bold" android:layout_weight="1"/>
-                        <TextView android:id="@+id/tv_card_type"
-                            android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="" android:textColor="#E1D4C2" android:textSize="13sp"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
-
-                    <View android:layout_width="38dp" android:layout_height="26dp"
-                        android:layout_marginTop="14dp" android:background="#FFD4A843"/>
+            <!-- Prévisualisation carte -
 
                     <TextView android:id="@+id/tv_card_preview_number"
                         android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -277,105 +249,15 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal" android:layout_marginTop="10dp">
 
-                        <LinearLayout android:layout_width="0dp" android:layout_weight="1"
-                            android:layout_height="wrap_content" android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="TITULAIRE" android:textColor="#A78D78"
-                                android:textSize="9sp" android:letterSpacing="0.1"/>
-                            <TextView android:id="@+id/tv_card_preview_holder"
-                                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="TITULAIRE" android:textColor="#FFFFFF"
-                                android:textSize="11sp"/>
-                        </LinearLayout>
+                        <Linea
 
-                        <LinearLayout android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="EXPIRE" android:textColor="#A78D78"
-                                android:textSize="9sp" android:letterSpacing="0.1"/>
-                            <TextView android:id="@+id/tv_card_preview_expiry"
-                                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="MM/AA" android:textColor="#FFFFFF"
-                                android:textSize="11sp"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            <!- Numéro carte -->
 
-            <!-- Numéro carte -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_card_number"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp" android:hint="Numéro de carte"
-                app:boxBackgroundColor="#F5EFE6" app:boxStrokeColor="#A78D78"
-                app:boxCornerRadiusTopStart="10dp" app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusBottomEnd="10dp"
-                app:errorTextColor="#B00020">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_card_number"
-                    android:layout_width="match_parent" android:layout_height="52dp"
-                    android:inputType="number" android:maxLength="19"
-                    android:textSize="16sp" android:textColor="#291C0E"
-                    android:fontFamily="monospace"/>
-            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Titulaire -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_card_holder"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp" android:hint="Nom du titulaire"
-                app:boxBackgroundColor="#F5EFE6" app:boxStrokeColor="#A78D78"
-                app:boxCornerRadiusTopStart="10dp" app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusBottomEnd="10dp"
-                app:errorTextColor="#B00020">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_card_holder"
-                    android:layout_width="match_parent" android:layout_height="52dp"
-                    android:inputType="textCapWords"
-                    android:textSize="14sp" android:textColor="#291C0E"/>
-            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Expiry + CVV -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="horizontal" android:weightSum="2">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_expiry"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp" android:layout_weight="1"
-                    android:layout_height="wrap_content" android:layout_marginEnd="6dp"
-                    android:hint="MM/AA"
-                    app:boxBackgroundColor="#F5EFE6" app:boxStrokeColor="#A78D78"
-                    app:boxCornerRadiusTopStart="10dp" app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusBottomEnd="10dp"
-                    app:errorTextColor="#B00020">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_expiry"
-                        android:layout_width="match_parent" android:layout_height="52dp"
-                        android:inputType="number" android:maxLength="5"
-                        android:textSize="14sp" android:textColor="#291C0E"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_cvv"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp" android:layout_weight="1"
-                    android:layout_height="wrap_content" android:layout_marginStart="6dp"
-                    android:hint="CVV"
-                    app:boxBackgroundColor="#F5EFE6" app:boxStrokeColor="#A78D78"
-                    app:boxCornerRadiusTopStart="10dp" app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusBottomEnd="10dp"
-                    app:errorTextColor="#B00020"
-                    app:passwordToggleEnabled="true">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_cvv"
-                        android:layout_width="match_parent" android:layout_height="52dp"
-                        android:inputType="numberPassword" android:maxLength="4"
-                        android:textSize="14sp" android:textColor="#291C0E"/>
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
