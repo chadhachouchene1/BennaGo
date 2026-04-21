@@ -1,5 +1,8 @@
+
 plugins {
+
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -32,12 +35,16 @@ android {
 }
 
 dependencies {
-
+    implementation(platform("com.google.firebase:firebase-bom:34.12.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("com.stripe:stripe-android:20.37.5")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.cardview)
+    implementation(libs.material.v1130)
     implementation("androidx.biometric:biometric:1.2.0-alpha05")
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")

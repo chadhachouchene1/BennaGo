@@ -1,223 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beige_light">
+    android:background="#F2EBE0">
 
-    <!-- HEADER -->
-    <View
-        android:id="@+id/header_bg"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/header_curve_orange"
-        android:importantForAccessibility="no"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <!-- Ligne haut : avatar + salutation -->
+    <!-- ══════════════════════════════════════════════
+         HEADER FIXE
+         ══════════════════════════════════════════════ -->
     <LinearLayout
-        android:id="@+id/header_row"
+        android:id="@+id/header_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:orientation="vertical"
+        android:background="@drawable/bg_login_hero"
+        android:paddingTop="36dp"
+        android:paddingBottom="20dp"
+        android:paddingHorizontal="20dp"
+        android:elevation="6dp">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- FIX: was #E0D8CF (insufficient contrast on orange header)
-                 Changed to @color/white (#FFFFFF) → contrast ~4.8:1 on orange_primary ✓ -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bonjour"
-                android:textSize="14sp"
-                android:textColor="@color/white"/>
-
-            <TextView
-                android:id="@+id/tv_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Utilisateur"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
-        </LinearLayout>
-
-        <!-- Avatar cliquable — minWidth/minHeight for touch target -->
-        <FrameLayout
-            android:id="@+id/iv_avatar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:background="@drawable/circle_orange_transparent"
-            android:contentDescription="Menu utilisateur">
-
-            <TextView
-                android:id="@+id/tv_avatar_letter"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="U"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:importantForAccessibility="no"/>
-        </FrameLayout>
-    </LinearLayout>
-
-    <!-- Barre de recherche -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="90dp"
-        app:cardCornerRadius="14dp"
-        app:cardElevation="6dp"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
+        <!-- Ligne 1 : Salutation + Avatar -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="16dp">
+            android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="&#x1F50D;"
-                android:textSize="18sp"
-                android:importantForAccessibility="no"/>
-
-            <!-- FIX: brown_medium (#7C4A2D) on white (#FFFFFF) = contrast ~6.3:1 ✓ -->
-            <TextView
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/search_hint"
-                android:textSize="14sp"
-                android:textColor="@color/brown_medium"
-                android:layout_marginStart="10dp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                android:orientation="vertical">
 
-    <!-- CONTENU SCROLLABLE -->
-    <ScrollView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bonjour 👋"
+                    android:textSize="13sp"
+                    android:textColor="#CCBFAF"
+                    android:letterSpacing="0.03"/>
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Utilisateur"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#F2EBE0"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+            <!-- Avatar → Profil -->
+            <FrameLayout
+                android:id="@+id/iv_avatar"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="@drawable/circle_orange_transparent">
+
+                <TextView
+                    android:id="@+id/tv_avatar_letter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="U"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#F2EBE0"
+                    android:gravity="center"/>
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- ✅ Ligne 2 : Barre de recherche FONCTIONNELLE avec EditText -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔍"
+                    android:textSize="16sp"/>
+
+                <!-- ✅ EditText fonctionnel -->
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:hint="Rechercher un plat..."
+                    android:textSize="14sp"
+                    android:textColor="#291C0E"
+                    android:textColorHint="#A78D78"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="text"
+                    android:imeOptions="actionSearch"
+                    android:singleLine="true"
+                    android:maxLines="1"/>
+
+                <!-- ✅ Bouton effacer la recherche -->
+                <TextView
+                    android:id="@+id/btn_clear_search"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:text="✕"
+                    android:textSize="14sp"
+                    android:textColor="#A78D78"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════════════
+         CONTENU SCROLLABLE
+         ══════════════════════════════════════════════ -->
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_content"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/card_search"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="170dp"
+        android:layout_marginBottom="64dp"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
 
-            <!-- ──── Catégories ──── -->
+            <!-- ✅ Bannière REMISE sur les plats (remplace "livraison offerte") -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_promo"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#6E473B">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Badge remise -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="#44FFFFFF"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="3dp"
+                            android:layout_marginBottom="6dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🏷️  REMISE SPÉCIALE"
+                                android:textSize="10sp"
+                                android:textColor="#F2EBE0"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.08"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_promo_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-15% sur tous\nles plats du jour !"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#F2EBE0"
+                            android:lineSpacingExtra="2dp"/>
+                    </LinearLayout>
+
+                    <!-- Pourcentage remise mis en avant -->
+                    <LinearLayout
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="#44FFFFFF">
+
+                        <TextView
+                            android:id="@+id/tv_promo_percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-15%"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#F2EBE0"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TODAY"
+                            android:textSize="9sp"
+                            android:textColor="#CCBFAF"
+                            android:gravity="center"
+                            android:letterSpacing="0.1"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── Titre Catégories (caché pendant la recherche) ── -->
             <TextView
+                android:id="@+id/tv_categories_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Catégories"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/brown_dark"
+                android:textColor="#291C0E"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"/>
 
+            <!-- ── Chips filtre (cachés pendant la recherche) ── -->
             <HorizontalScrollView
+                android:id="@+id/scroll_chips"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp">
+                android:paddingHorizontal="16dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- Chip Tous — white on brown_dark: contrast ~14:1 ✓ -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:text="Tous"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        android:gravity="center"
+                    <TextView android:id="@+id/chip_all"
+                        android:layout_width="wrap_content" android:layout_height="38dp"
+                        android:text="✨ Tous" android:textSize="13sp" android:textStyle="bold"
+                        android:textColor="#F2EBE0" android:gravity="center"
                         android:background="@color/brown_dark"
-                        android:paddingHorizontal="14dp"
-                        android:layout_marginEnd="8dp"/>
+                        android:paddingHorizontal="16dp" android:layout_marginEnd="8dp"/>
 
-                    <!-- Chips inactifs — brown_dark on #E8D5C0: contrast ~5.8:1 ✓ -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:text="Burgers"
-                        android:textSize="13sp"
-                        android:textColor="@color/brown_dark"
-                        android:gravity="center"
-                        android:background="#FFE8D5C0"
-                        android:paddingHorizontal="14dp"
-                        android:layout_marginEnd="8dp"/>
+                    <TextView android:id="@+id/chip_burger"
+                        android:layout_width="wrap_content" android:layout_height="38dp"
+                        android:text="🍔 Burgers" android:textSize="13sp"
+                        android:textColor="#6E473B" android:gravity="center"
+                        android:background="#FFEADFD8"
+                        android:paddingHorizontal="16dp" android:layout_marginEnd="8dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:text="Pizzas"
-                        android:textSize="13sp"
-                        android:textColor="@color/brown_dark"
-                        android:gravity="center"
-                        android:background="#FFE8D5C0"
-                        android:paddingHorizontal="14dp"
-                        android:layout_marginEnd="8dp"/>
+                    <TextView android:id="@+id/chip_pizza"
+                        android:layout_width="wrap_content" android:layout_height="38dp"
+                        android:text="🍕 Pizzas" android:textSize="13sp"
+                        android:textColor="#6E473B" android:gravity="center"
+                        android:background="#FFEADFD8"
+                        android:paddingHorizontal="16dp" android:layout_marginEnd="8dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:text="Sushis"
-                        android:textSize="13sp"
-                        android:textColor="@color/brown_dark"
-                        android:gravity="center"
-                        android:background="#FFE8D5C0"
-                        android:paddingHorizontal="14dp"
-                        android:layout_marginEnd="8dp"/>
+                    <TextView android:id="@+id/chip_sandwich"
+                        android:layout_width="wrap_content" android:layout_height="38dp"
+                        android:text="🥪 Sandwichs" android:textSize="13sp"
+                        android:textColor="#6E473B" android:gravity="center"
+                        android:background="#FFEADFD8"
+                        android:paddingHorizontal="16dp" android:layout_marginEnd="8dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:text="Desserts"
-                        android:textSize="13sp"
-                        android:textColor="@color/brown_dark"
-                        android:gravity="center"
-                        android:background="#FFE8D5C0"
-                        android:paddingHorizontal="14dp"
-                        android:layout_marginEnd="8dp"/>
+                    <TextView android:id="@+id/chip_dessert"
+                        android:layout_width="wrap_content" android:layout_height="38dp"
+                        android:text="🍰 Desserts" android:textSize="13sp"
+                        android:textColor="#6E473B" android:gravity="center"
+                        android:background="#FFEADFD8"
+                        android:paddingHorizontal="16dp" android:layout_marginEnd="8dp"/>
+
+                    <TextView android:id="@+id/chip_boisson"
+                        android:layout_width="wrap_content" android:layout_height="38dp"
+                        android:text="🥤 Boissons" android:textSize="13sp"
+                        android:textColor="#6E473B" android:gravity="center"
+                        android:background="#FFEADFD8"
+                        android:paddingHorizontal="16dp" android:layout_marginEnd="8dp"/>
 
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- ──── Plats populaires ──── -->
+            <!-- ── Titre Notre Menu / Résultats recherche ── -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -228,315 +313,84 @@
                 android:layout_marginBottom="10dp">
 
                 <TextView
+                    android:id="@+id/tv_menu_title"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Populaires"
+                    android:text="Notre Menu"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/brown_dark"/>
+                    android:textColor="#291C0E"/>
 
-                <!-- FIX: orange_primary (#D4703A) on white (#FFFFFF) = contrast ~3.1:1
-                     Changed to orange_dark (#B85A2A) on white = contrast ~4.6:1 ✓ -->
                 <TextView
+                    android:id="@+id/tv_dish_count_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Voir tout"
-                    android:textSize="13sp"
-                    android:textColor="@color/orange_dark"/>
+                    android:text=""
+                    android:textSize="12sp"
+                    android:textColor="#A78D78"/>
             </LinearLayout>
 
-            <!-- Grille plats 1ère ligne -->
-            <LinearLayout
+            <!-- Message vide -->
+            <TextView
+                android:id="@+id/tv_menu_empty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="12dp"
-                android:weightSum="2">
+                android:text="Aucun plat trouvé."
+                android:textColor="#A78D78"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_marginTop="40dp"
+                android:visibility="gone"/>
 
-                <!-- Carte plat 1 -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/white">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:text="&#x1F354;"
-                            android:textSize="50sp"
-                            android:gravity="center"
-                            android:importantForAccessibility="no"
-                            android:background="@color/beige_light"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Double Beef"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/brown_dark"
-                            android:layout_marginTop="8dp"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="4dp">
-
-                            <!-- orange_dark on white = 4.6:1 ✓ -->
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:text="750 DA"
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/orange_dark"/>
-
-                            <!-- white on brown_dark = 14:1 ✓ -->
-                            <TextView
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:text="+"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/white"
-                                android:gravity="center"
-                                android:contentDescription="Ajouter au panier"
-                                android:background="@color/brown_dark"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <!-- Carte plat 2 -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/white">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:text="&#x1F355;"
-                            android:textSize="50sp"
-                            android:gravity="center"
-                            android:importantForAccessibility="no"
-                            android:background="@color/beige_light"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pizza Chicken"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/brown_dark"
-                            android:layout_marginTop="8dp"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="4dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:text="900 DA"
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/orange_dark"/>
-
-                            <TextView
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:text="+"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/white"
-                                android:gravity="center"
-                                android:contentDescription="Ajouter au panier"
-                                android:background="@color/brown_dark"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-            <!-- Grille plats 2ème ligne -->
-            <LinearLayout
+            <!-- RecyclerView plats -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="20dp"
-                android:weightSum="2">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/white">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:text="&#x1F363;"
-                            android:textSize="50sp"
-                            android:gravity="center"
-                            android:importantForAccessibility="no"
-                            android:background="@color/beige_light"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sushi Mix"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/brown_dark"
-                            android:layout_marginTop="8dp"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="4dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:text="1200 DA"
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/orange_dark"/>
-
-                            <TextView
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:text="+"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/white"
-                                android:gravity="center"
-                                android:contentDescription="Ajouter au panier"
-                                android:background="@color/brown_dark"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/white">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:text="&#x1F370;"
-                            android:textSize="50sp"
-                            android:gravity="center"
-                            android:importantForAccessibility="no"
-                            android:background="@color/beige_light"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tiramisu"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/brown_dark"
-                            android:layout_marginTop="8dp"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="4dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:text="450 DA"
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/orange_dark"/>
-
-                            <TextView
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:text="+"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/white"
-                                android:gravity="center"
-                                android:contentDescription="Ajouter au panier"
-                                android:background="@color/brown_dark"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
+                android:paddingHorizontal="12dp"
+                android:paddingBottom="8dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"/>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-    <!-- BOTTOM NAVIGATION -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
+    <!-- ══════════════════════════════════════════════
+         BOTTOM NAVIGATION
+         ══════════════════════════════════════════════ -->
+    <FrameLayout
+        android:id="@+id/bottom_nav_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:menu="@menu/bottom_nav_user"
-        app:itemIconTint="@color/brown_medium"
-        app:itemTextColor="@color/brown_medium"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_gravity="bottom"
+        android:elevation="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="#FFFFFF"
+            app:menu="@menu/bottom_nav_user"
+            app:itemIconTint="@color/brown_medium"
+            app:itemTextColor="@color/brown_medium"
+            app:labelVisibilityMode="labeled"/>
+
+        <TextView
+            android:id="@+id/tv_cart_badge"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="4dp"
+            android:text="0"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:background="#FFB00020"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

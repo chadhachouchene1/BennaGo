@@ -11,7 +11,7 @@ public class SessionManager {
     private static final String KEY_IS_LOGGED_IN = "is_logged_in";
     private static final String KEY_IS_ADMIN     = "is_admin";
 
-    private final SharedPreferences      prefs;
+    private final SharedPreferences        prefs;
     private final SharedPreferences.Editor editor;
 
     public SessionManager(Context context) {
@@ -24,6 +24,12 @@ public class SessionManager {
         editor.putString(KEY_USER_NAME, userName);
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
         editor.putBoolean(KEY_IS_ADMIN, isAdmin);
+        editor.apply();
+    }
+
+    // ✅ Met à jour le nom affiché après modification dans ProfileActivity
+    public void updateUserName(String newName) {
+        editor.putString(KEY_USER_NAME, newName);
         editor.apply();
     }
 

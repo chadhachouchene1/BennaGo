@@ -1,6 +1,550 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2EBE0"
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="40dp">
+
+        <!-- ══════════════════════════════════════════════
+             HEADER avec avatar centré
+             ══════════════════════════════════════════════ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_login_hero"
+            android:paddingTop="36dp"
+            android:paddingBottom="20dp">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="16dp"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/ic_media_previous"
+                android:tint="#F2EBE0"
+                android:layout_marginBottom="8dp"/>
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="40dp"
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="#6E473B">
+
+                    <TextView
+                        android:id="@+id/tv_profile_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="U"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:textColor="#F2EBE0"
+                        android:gravity="center"/>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:text="✏️"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:background="#FFFFFFFF"
+                    android:layout_gravity="bottom|end"
+                    android:elevation="4dp"/>
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_profile_name_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mon Profil"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#F2EBE0"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_profile_email_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="12sp"
+                android:textColor="#CCBFAF"
+                android:layout_marginTop="2dp"/>
+
+        </LinearLayout>
+
+        <!-- ══════════════════════════════════════════════
+             CARTE : Informations personnelles
+             ══════════════════════════════════════════════ -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="-16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="👤  Mes informations"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#291C0E"/>
+
+                    <TextView
+                        android:id="@+id/tv_edit_toggle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Modifier"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#6E473B"
+                        android:background="#22A78D78"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp"/>
+                </LinearLayout>
+
+                <!-- NOM -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NOM COMPLET"
+                    android:textColor="#A78D78"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.12"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_profile_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="#F5EFE6"
+                    app:boxStrokeColor="#A78D78"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:startIconDrawable="@android:drawable/ic_menu_myplaces"
+                    app:startIconTint="#6E473B">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_profile_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="Votre nom complet"
+                        android:textSize="14sp"
+                        android:textColor="#291C0E"
+                        android:enabled="false"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- EMAIL -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EMAIL"
+                    android:textColor="#A78D78"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.12"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_profile_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="#F5EFE6"
+                    app:boxStrokeColor="#A78D78"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:startIconDrawable="@android:drawable/ic_dialog_email"
+                    app:startIconTint="#6E473B">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_profile_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="votre@email.com"
+                        android:inputType="textEmailAddress"
+                        android:textSize="14sp"
+                        android:textColor="#291C0E"
+                        android:enabled="false"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- TÉLÉPHONE -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TÉLÉPHONE"
+                    android:textColor="#A78D78"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.12"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_profile_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="#F5EFE6"
+                    app:boxStrokeColor="#A78D78"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:startIconDrawable="@android:drawable/ic_menu_call"
+                    app:startIconTint="#6E473B">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_profile_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="+216 XX XXX XXX"
+                        android:inputType="phone"
+                        android:textSize="14sp"
+                        android:textColor="#291C0E"
+                        android:enabled="false"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_save_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="20dp"
+                    android:text="💾  Sauvegarder les modifications"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#F2EBE0"
+                    app:backgroundTint="#6E473B"
+                    app:cornerRadius="12dp"
+                    app:elevation="4dp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ══════════════════════════════════════════════
+             CARTE : Changer mot de passe
+             ══════════════════════════════════════════════ -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔒  Sécurité"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#291C0E"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MOT DE PASSE ACTUEL"
+                    android:textColor="#A78D78"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.12"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_current_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="#F5EFE6"
+                    app:boxStrokeColor="#A78D78"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:passwordToggleEnabled="true"
+                    app:startIconDrawable="@android:drawable/ic_lock_lock"
+                    app:startIconTint="#6E473B"
+                    app:errorTextColor="#B00020">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_current_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="••••••••"
+                        android:inputType="textPassword"
+                        android:textSize="14sp"
+                        android:textColor="#291C0E"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NOUVEAU MOT DE PASSE"
+                    android:textColor="#A78D78"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.12"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_new_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="#F5EFE6"
+                    app:boxStrokeColor="#A78D78"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:passwordToggleEnabled="true"
+                    app:startIconDrawable="@android:drawable/ic_lock_lock"
+                    app:startIconTint="#6E473B"
+                    app:errorTextColor="#B00020">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_new_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="Minimum 8 caractères"
+                        android:inputType="textPassword"
+                        android:textSize="14sp"
+                        android:textColor="#291C0E"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONFIRMER NOUVEAU MOT DE PASSE"
+                    android:textColor="#A78D78"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.12"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_confirm_new_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="#F5EFE6"
+                    app:boxStrokeColor="#A78D78"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:passwordToggleEnabled="true"
+                    app:startIconDrawable="@android:drawable/ic_lock_lock"
+                    app:startIconTint="#6E473B"
+                    app:errorTextColor="#B00020">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_confirm_new_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="Répétez le nouveau mot de passe"
+                        android:inputType="textPassword"
+                        android:textSize="14sp"
+                        android:textColor="#291C0E"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_change_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="20dp"
+                    android:text="🔐  Changer le mot de passe"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#F2EBE0"
+                    app:backgroundTint="#291C0E"
+                    app:cornerRadius="12dp"
+                    app:elevation="4dp"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ══════════════════════════════════════════════
+             CARTE : Mon activité + bouton Mes avis
+             ══════════════════════════════════════════════ -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📊  Mon activité"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#291C0E"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Stats : commandes + dépenses -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="80dp"
+                        android:layout_marginEnd="6dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="#FFF5EDE8">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📋"
+                            android:textSize="20sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_profile_order_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="#6E473B"
+                            android:layout_marginTop="2dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Commandes"
+                            android:textSize="11sp"
+                            android:textColor="#A78D78"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="6dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="#FFFEFFFB">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💰"
+                            android:textSize="20sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_profile_total_spent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 TND"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#5A9E6F"
+                            android:layout_marginTop="2dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total dépensé"
+                            android:textSize="11sp"
+                            android:textColor="#A78D78"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- ✅ Bouton Mes avis — accès direct à ReviewsActivity -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_my_reviews"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="⭐  Donner / voir mes avis"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#6E473B"
+                    app:strokeColor="#6E473B"
+                    app:cornerRadius="12dp"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ══════════════════════════════════════════════
+             BOUTON DÉCONNEXION
+             ══════════════════════════════════════════════ -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_logout"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:text="🚪  Se déconnecter"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#B00020"
+            app:strokeColor="#B00020"
+            app:cornerRadius="12dp"/>
+
+    </LinearLayout>
+</ScrollView>

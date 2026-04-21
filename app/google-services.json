@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "318120591505",
+    "project_id": "bennago-2a3b0",
+    "storage_bucket": "bennago-2a3b0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318120591505:android:9c8f9c347ae9769caaff30",
+        "android_client_info": {
+          "package_name": "com.example.bennago"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_AB_rhBOM2vNOOAljgRngexNEZSU6ef0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

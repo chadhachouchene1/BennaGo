@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Deep warm brown-to-dark gradient matching BennaGo palette -->
+    <gradient
+        android:type="linear"
+        android:angle="135"
+        android:startColor="#1A0A02"
+        android:centerColor="#2D1208"
+        android:endColor="#3B1F0C"/>
+</shape>

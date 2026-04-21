@@ -1,4 +1,5 @@
 package com.example.bennago;
+import android.widget.ImageView;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -20,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        TextView tvIcon     = findViewById(R.id.tv_logo_icon);
+        ImageView tvIcon = findViewById(R.id.tv_logo_icon);
         TextView tvName     = findViewById(R.id.tv_app_name);
         TextView tvTagline  = findViewById(R.id.tv_tagline);
         ProgressBar progressBar = findViewById(R.id.progress_bar);

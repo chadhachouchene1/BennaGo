@@ -4,8 +4,6 @@
 
     <!-- Splash -->
     <string name="tagline">Savourez chaque instant</string>
-    <!-- FIX: emoji as XML Unicode escape — avoids AAPT "Can not extract resource" -->
-    <string name="splash_icon">&#x1F354;</string>
 
     <!-- Login -->
     <string name="btn_login">Se connecter</string>
@@ -38,5 +36,6 @@
     <string name="cancel">Annuler</string>
     <string name="welcome">Bon retour !</string>
     <string name="subtitle">Connectez-vous pour commander</string>
+    <string name="splash_icon" />
 
 </resources>

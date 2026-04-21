@@ -6,4 +6,11 @@
     <item name="tv_avatar_letter" type="id" />
     <item name="iv_avatar" type="id" />
     <item name="bottom_nav" type="id" />
+    <item name="tv_recent_order_id" type="id" />
+    <item name="tv_recent_order_client" type="id" />
+    <item name="tv_recent_order_total" type="id" />
+    <item name="tv_recent_order_date" type="id" />
+    <item name="tv_recent_order_status" type="id" />
+    <item name="layout_recent_orders_container" type="id" />
+    <item name="tv_recent_orders_empty" type="id" />
 </resources>

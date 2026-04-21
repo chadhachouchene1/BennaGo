@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricManager;
@@ -18,6 +19,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -29,8 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText etEmail, etPassword;
     private TextInputLayout   tilEmail, tilPassword;
-    private MaterialButton    btnLogin;
-    private MaterialButton    btnBiometric;
+    private MaterialButton    btnLogin, btnBiometric;
     private TextView          tvRegisterLink, tvErrorMessage;
     private TabLayout         tabLayout;
 
@@ -87,99 +88,56 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // ── Biométrie ────────────────────────────────────────────────────────────
     private void setupBiometric() {
-
         Executor mainExecutor = ContextCompat.getMainExecutor(this);
 
         biometricPrompt = new BiometricPrompt(this, mainExecutor,
                 new BiometricPrompt.AuthenticationCallback() {
-
                     @Override
-                    public void onAuthenticationSucceeded(
-                            @NonNull BiometricPrompt.AuthenticationResult result) {
+                    public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                         super.onAuthenticationSucceeded(result);
-                        // ✅ Empreinte OK → admin connecté directement
                         sessionManager.saveUserSession(-1, "Administrateur", true);
                         Toast.makeText(LoginActivity.this,
-                                "Empreinte reconnue — Bienvenue Admin !",
-                                Toast.LENGTH_SHORT).show();
+                                "Empreinte reconnue — Bienvenue Admin !", Toast.LENGTH_SHORT).show();
                         goTo(AdminActivity.class);
                     }
 
                     @Override
-                    public void onAuthenticationError(int errorCode,
-                                                      @NonNull CharSequence errString) {
+                    public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                         super.onAuthenticationError(errorCode, errString);
-                        // Annulation → rien à faire
                         if (errorCode != BiometricPrompt.ERROR_USER_CANCELED &&
-                                errorCode != BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+                                errorCode != BiometricPrompt.ERROR_NEGATIVE_BUTTON)
                             showError("Erreur biométrie : " + errString);
-                        }
                     }
 
                     @Override
                     public void onAuthenticationFailed() {
                         super.onAuthenticationFailed();
-                        // Empreinte refusée — peut réessayer
                         Toast.makeText(LoginActivity.this,
-                                "Empreinte non reconnue, réessayez",
-                                Toast.LENGTH_SHORT).show();
+                                "Empreinte non reconnue, réessayez", Toast.LENGTH_SHORT).show();
                     }
                 });
 
-        // ✅ BIOMETRIC_WEAK : compatible avec tous les capteurs Android
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Connexion Admin")
                 .setSubtitle("Posez votre doigt pour accéder au panneau admin")
-                .setDescription("Authentification par empreinte digitale requise")
                 .setNegativeButtonText("Utiliser email / mot de passe")
                 .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_WEAK)
                 .build();
 
-        // Vérifier si l'appareil a une empreinte enregistrée
-        BiometricManager biometricManager = BiometricManager.from(this);
-        int status = biometricManager.canAuthenticate(
-                BiometricManager.Authenticators.BIOMETRIC_WEAK);
-
-        if (status == BiometricManager.BIOMETRIC_SUCCESS) {
-            // Empreinte disponible → bouton visible
+        BiometricManager bm = BiometricManager.from(this);
+        if (bm.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK)
+                == BiometricManager.BIOMETRIC_SUCCESS) {
             btnBiometric.setVisibility(View.VISIBLE);
         } else {
-            // Pas de biométrie → bouton caché
             btnBiometric.setVisibility(View.GONE);
-
-            // Log pour déboguer (visible dans Logcat)
-            String reason;
-            switch (status) {
-                case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
-                    reason = "Pas de capteur biométrique"; break;
-                case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
-                    reason = "Capteur indisponible"; break;
-                case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
-                    reason = "Aucune empreinte enregistrée dans Paramètres > Sécurité"; break;
-                default:
-                    reason = "Biométrie indisponible (code " + status + ")"; break;
-            }
-            android.util.Log.d("BIOMETRIC_STATUS", reason);
         }
     }
 
     private void setupClickListeners() {
-
-        btnLogin.setOnClickListener(v -> {
-            clearAll();
-            handleLogin();
-        });
-
-        // Clic empreinte → ouvre le dialogue système
-        btnBiometric.setOnClickListener(v -> {
-            clearAll();
-            biometricPrompt.authenticate(promptInfo);
-        });
-
-        tvRegisterLink.setOnClickListener(v ->
-                startActivity(new Intent(this, RegisterActivity.class)));
+        btnLogin.setOnClickListener(v -> { clearAll(); handleLogin(); });
+        btnBiometric.setOnClickListener(v -> { clearAll(); biometricPrompt.authenticate(promptInfo); });
+        tvRegisterLink.setOnClickListener(v -> startActivity(new Intent(this, RegisterActivity.class)));
     }
 
     private void handleLogin() {
@@ -189,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(email))    { tilEmail.setError("Email requis");           return; }
         if (TextUtils.isEmpty(password)) { tilPassword.setError("Mot de passe requis"); return; }
 
-        // Admin → pas de DB
+        // Admin
         if (email.equals(ADMIN_EMAIL) && password.equals(ADMIN_PASSWORD)) {
             sessionManager.saveUserSession(-1, "Administrateur", true);
             Toast.makeText(this, "Bienvenue Admin !", Toast.LENGTH_SHORT).show();
@@ -197,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Utilisateur → DB
+        // Client
         setLoading(true);
         executor.execute(() -> {
             User user = db.userDao().getUserByEmail(email);
@@ -207,10 +165,12 @@ public class LoginActivity extends AppCompatActivity {
                     showError("Aucun compte trouvé avec cet email");
                 } else if (!user.getPassword().equals(password)) {
                     showError("Mot de passe incorrect");
+                } else if (user.isBlocked()) {
+                    // ✅ Compte bloqué par l'admin
+                    showError("Votre compte a été suspendu. Contactez l'administrateur.");
                 } else {
                     sessionManager.saveUserSession(user.getId(), user.getName(), false);
-                    Toast.makeText(this,
-                            "Bienvenue " + user.getName() + " !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Bienvenue " + user.getName() + " !", Toast.LENGTH_SHORT).show();
                     goTo(MainActivity.class);
                 }
             });

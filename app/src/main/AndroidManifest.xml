@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,10 +16,15 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.BennaGo"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         tools:targetApi="31">
-
+        <service
+            android:name=".BennaGoFirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
         <!-- ✅ LAUNCHER = SplashActivity (premier écran affiché) -->
         <activity
             android:name=".SplashActivity"
@@ -47,6 +57,21 @@
             android:name=".AdminActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".ManageMenuActivity"/>
+        <activity android:name=".AddEditDishActivity"/>
+        <activity android:name=".StatsActivity"/>
+        <activity android:name=".CartActivity"/>
+        <activity android:name=".CheckoutActivity"/>
+        <activity android:name=".ManageOrdersActivity"/>
+        <activity android:name=".ManageUsersActivity"/>
+        <activity android:name=".PaymentActivity"/>
+        <activity android:name=".MyOrdersActivity"/>
+        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".ReviewsActivity"/>
+        <activity android:name=".AdminReviewsActivity"/>
+
+
 
     </application>
 
